@@ -1,0 +1,53 @@
+---
+title: "Binomial Basics"
+author: "Anson Huang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Binomial Basics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo=FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+library(binomial)
+```
+
+## Binomial Package
+
+This package allows for the creation and manipulation custom binomial variables and distributions. After binomial distributions are created, they can be visualized. Functions of measures can also be summarized and outputted for each distribution. This package allows for the creations of simple binomial distributions and cumulative distributions. 
+
+## Creating a Binomial Distribution
+
+```{r}
+# Creating the binomial variable
+bin1 <- bin_variable(trials = 30, prob = 0.5)
+bin1
+
+# Viewing summary statistics of the variable
+summary(bin1)
+
+# Statistics can be viewed singularly as well
+bin_mean(trials = 30, prob = 0.5)
+
+# Using bin_choose to calculate the number of combinations, which will be used to create the binomial distribution
+bin_choose(n = 30, k = 5)
+
+# Calculating the probability value with certain parameters
+bin_probability(success = 8, trials = 30, prob = 0.5)
+
+# Creating a binomial distribution with the same parameters
+bin_distribution(trials = 30, prob = 0.5)
+
+# Creating a cumulative binomial distribution with the same parameters
+bin_cumulative(trials = 30, prob = 0.5)
+
+```
+
+## Including Plots of the Distributions
+
+```{r}
+plot(bin_distribution(trials = 30, prob = 0.5))
+plot(bin_cumulative(trials = 30, prob = 0.5))
+```
